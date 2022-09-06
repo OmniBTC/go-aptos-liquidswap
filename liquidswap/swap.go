@@ -12,6 +12,14 @@ const (
 	GREATER_THAN = 2
 )
 
+func AmountMinOut(val *big.Int, slippage decimal.Decimal) *big.Int {
+	return WithSlippage(val, slippage, -1)
+}
+
+func AmountMaxIn(val *big.Int, slippage decimal.Decimal) *big.Int {
+	return WithSlippage(val, slippage, 1)
+}
+
 func WithSlippage(val *big.Int, slippage decimal.Decimal, mod int) *big.Int {
 	if mod > 0 {
 		return decimal.NewFromBigInt(val, 0).Add(decimal.NewFromBigInt(val, 0).Mul(slippage)).BigInt()

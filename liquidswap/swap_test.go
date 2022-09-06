@@ -97,3 +97,59 @@ func TestWithSlippage(t *testing.T) {
 		})
 	}
 }
+
+func TestAmountMinOut(t *testing.T) {
+	type args struct {
+		val      *big.Int
+		slippage decimal.Decimal
+	}
+	tests := []struct {
+		name string
+		args args
+		want *big.Int
+	}{
+		{
+			name: "case out(from)",
+			args: args{
+				val:      big.NewInt(266607),
+				slippage: decimal.NewFromFloat(0.005),
+			},
+			want: big.NewInt(265273),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := AmountMinOut(tt.args.val, tt.args.slippage); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("AmountMinOut() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestAmountMaxIn(t *testing.T) {
+	type args struct {
+		val      *big.Int
+		slippage decimal.Decimal
+	}
+	tests := []struct {
+		name string
+		args args
+		want *big.Int
+	}{
+		{
+			name: "case in(to)",
+			args: args{
+				val:      big.NewInt(750174),
+				slippage: decimal.NewFromFloat(0.005),
+			},
+			want: big.NewInt(753924),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := AmountMaxIn(tt.args.val, tt.args.slippage); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("AmountMaxIn() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
