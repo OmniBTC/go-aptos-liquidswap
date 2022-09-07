@@ -29,7 +29,7 @@ func WithSlippage(val *big.Int, slippage decimal.Decimal, mod int) *big.Int {
 }
 
 func CalculateRates(fromCoin, toCoin Coin, amount *big.Int, interactiveToken string, pool PoolResource) *big.Int {
-	isSorted := isSortedSymbols(fromCoin.Symbol, toCoin.Symbol)
+	isSorted := IsSortedSymbols(fromCoin.Symbol, toCoin.Symbol)
 	var (
 		reserveX *big.Int
 		reserveY *big.Int
@@ -68,7 +68,7 @@ func getFee() (*big.Int, *big.Int) {
 	return big.NewInt(3), big.NewInt(1000)
 }
 
-func isSortedSymbols(symbolX, symbolY string) bool {
+func IsSortedSymbols(symbolX, symbolY string) bool {
 	return compare(symbolX, symbolY) == LESS_THAN
 }
 
