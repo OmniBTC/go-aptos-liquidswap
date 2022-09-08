@@ -13,7 +13,7 @@ type Payload struct {
 	Args     []string
 }
 
-type CreateTxPayloadParams struct {
+type SwapParams struct {
 	Script           string // eg. 0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::scripts
 	FromCoin         string
 	ToCoin           string
@@ -24,7 +24,7 @@ type CreateTxPayloadParams struct {
 	Pool             Pool
 }
 
-func CreateTxPayload(params *CreateTxPayloadParams) (*Payload, error) {
+func CreateSwapPayload(params *SwapParams) (*Payload, error) {
 	if nil == params {
 		return nil, errors.New("invalid params: nil")
 	}
@@ -44,10 +44,10 @@ func CreateTxPayload(params *CreateTxPayloadParams) (*Payload, error) {
 		params.Pool.LpToken,
 	}
 	if params.InteractiveToken != "from" {
-		params.FromAmount = WithSlippage(params.FromAmount, params.Slippage, 1)
+		params.FromAmount = withSlippage(params.FromAmount, params.Slippage, 1)
 	}
 	if params.InteractiveToken == "from" {
-		params.ToAmount = WithSlippage(params.ToAmount, params.Slippage, -1)
+		params.ToAmount = withSlippage(params.ToAmount, params.Slippage, -1)
 	}
 	args := []string{
 		params.Pool.Address,

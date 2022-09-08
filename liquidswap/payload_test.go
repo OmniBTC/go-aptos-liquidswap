@@ -10,7 +10,7 @@ import (
 
 func TestCreateTxPayload(t *testing.T) {
 	type args struct {
-		params *CreateTxPayloadParams
+		params *SwapParams
 	}
 	tests := []struct {
 		name    string
@@ -21,7 +21,7 @@ func TestCreateTxPayload(t *testing.T) {
 		{
 			name: "case out",
 			args: args{
-				&CreateTxPayloadParams{
+				&SwapParams{
 					Script:           "0x123::scripts",
 					FromCoin:         "0x123::BTC",
 					ToCoin:           "0x123::APT",
@@ -54,7 +54,7 @@ func TestCreateTxPayload(t *testing.T) {
 		{
 			name: "case in",
 			args: args{
-				&CreateTxPayloadParams{
+				&SwapParams{
 					Script:           "0x123::scripts",
 					FromCoin:         "0x123::BTC",
 					ToCoin:           "0x123::APT",
@@ -87,7 +87,7 @@ func TestCreateTxPayload(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := CreateTxPayload(tt.args.params)
+			got, err := CreateSwapPayload(tt.args.params)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("CreateTxPayload() error = %v, wantErr %v", err, tt.wantErr)
 				return

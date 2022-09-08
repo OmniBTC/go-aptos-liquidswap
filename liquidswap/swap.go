@@ -13,14 +13,14 @@ const (
 )
 
 func AmountMinOut(val *big.Int, slippage decimal.Decimal) *big.Int {
-	return WithSlippage(val, slippage, -1)
+	return withSlippage(val, slippage, -1)
 }
 
 func AmountMaxIn(val *big.Int, slippage decimal.Decimal) *big.Int {
-	return WithSlippage(val, slippage, 1)
+	return withSlippage(val, slippage, 1)
 }
 
-func WithSlippage(val *big.Int, slippage decimal.Decimal, mod int) *big.Int {
+func withSlippage(val *big.Int, slippage decimal.Decimal, mod int) *big.Int {
 	if mod > 0 {
 		return decimal.NewFromBigInt(val, 0).Add(decimal.NewFromBigInt(val, 0).Mul(slippage)).BigInt()
 	} else {
@@ -28,7 +28,15 @@ func WithSlippage(val *big.Int, slippage decimal.Decimal, mod int) *big.Int {
 	}
 }
 
-func CalculateRates(fromCoin, toCoin Coin, amount *big.Int, interactiveToken string, pool PoolResource) *big.Int {
+func GetAmountIn(fromCoin, toCoin Coin, amountOut *big.Int, pool PoolResource) *big.Int {
+	return calculateRates(fromCoin, toCoin, amountOut, "to", pool)
+}
+
+func GetAmountOut(fromCoin, toCoin Coin, amountIn *big.Int, pool PoolResource) *big.Int {
+	return calculateRates(fromCoin, toCoin, amountIn, "from", pool)
+}
+
+func calculateRates(fromCoin, toCoin Coin, amount *big.Int, interactiveToken string, pool PoolResource) *big.Int {
 	isSorted := IsSortedSymbols(fromCoin.Symbol, toCoin.Symbol)
 	var (
 		reserveX *big.Int

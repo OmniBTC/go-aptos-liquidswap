@@ -52,7 +52,7 @@ func TestCalculateRates(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := CalculateRates(tt.args.fromCoin, tt.args.toCoin, tt.args.amount, tt.args.interactiveToken, tt.args.pool); !reflect.DeepEqual(got, tt.want) {
+			if got := calculateRates(tt.args.fromCoin, tt.args.toCoin, tt.args.amount, tt.args.interactiveToken, tt.args.pool); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("CalculateRates() = %v, want %v", got, tt.want)
 			}
 		})
@@ -91,7 +91,7 @@ func TestWithSlippage(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := WithSlippage(tt.args.val, tt.args.slippage, tt.args.mod); !reflect.DeepEqual(got, tt.want) {
+			if got := withSlippage(tt.args.val, tt.args.slippage, tt.args.mod); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("WithSlippage() = %v, want %v", got, tt.want)
 			}
 		})
