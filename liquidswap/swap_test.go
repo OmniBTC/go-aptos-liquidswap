@@ -153,3 +153,53 @@ func TestAmountMaxIn(t *testing.T) {
 		})
 	}
 }
+
+func Test_compare(t *testing.T) {
+	type args struct {
+		symbolX string
+		symbolY string
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "APTOS BTC",
+			args: args{"APTOS", "BTC"},
+			want: LESS_THAN,
+		},
+		{
+			name: "BTC APTOS",
+			args: args{"BTC", "APTOS"},
+			want: GREATER_THAN,
+		},
+		{
+			name: "BTC USDT",
+			args: args{"BTC", "USDT"},
+			want: LESS_THAN,
+		},
+		{
+			name: "USDT BTC",
+			args: args{"USDT", "BTC"},
+			want: GREATER_THAN,
+		},
+		{
+			name: "USDC USDT",
+			args: args{"USDC", "USDT"},
+			want: LESS_THAN,
+		},
+		{
+			name: "APTOS USDT",
+			args: args{"APTOS", "USDT"},
+			want: LESS_THAN,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := compare(tt.args.symbolX, tt.args.symbolY); got != tt.want {
+				t.Errorf("compare() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

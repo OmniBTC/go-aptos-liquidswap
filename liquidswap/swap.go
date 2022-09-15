@@ -84,14 +84,13 @@ func compare(symbolX, symbolY string) int {
 	ix := len(symbolX)
 	iy := len(symbolY)
 	lenCmp := cmp(ix, iy)
-	for ix > 0 && iy > 0 {
-		ix -= 1
-		iy -= 1
-
-		elemCmp := cmp(int(symbolX[ix]), int(symbolY[iy]))
-		if elemCmp != 0 {
+	i := 0
+	for i < ix && i < iy {
+		elemCmp := cmp(int(symbolX[i]), int(symbolY[i]))
+		if elemCmp != EQUAL {
 			return elemCmp
 		}
+		i++
 	}
 	return lenCmp
 }
