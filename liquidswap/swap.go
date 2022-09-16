@@ -84,6 +84,10 @@ func compare(symbolX, symbolY string) int {
 	ix := len(symbolX)
 	iy := len(symbolY)
 	lenCmp := cmp(ix, iy)
+	// &bcs::to_bytes(utf8(b"hello")) in Aptos the first bytes contains length of string
+	if lenCmp != EQUAL {
+		return lenCmp
+	}
 	i := 0
 	for i < ix && i < iy {
 		elemCmp := cmp(int(symbolX[i]), int(symbolY[i]))
@@ -92,7 +96,7 @@ func compare(symbolX, symbolY string) int {
 		}
 		i++
 	}
-	return lenCmp
+	return EQUAL
 }
 
 func cmp(a, b int) int {

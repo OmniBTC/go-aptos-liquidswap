@@ -12,9 +12,9 @@ go get github.com/coming-chat/go-aptos-liquidswap
 Get amount out:
 ```go
 amountOut := GetAmountOut(Coin{Symbol: "USDT"}, Coin{Symbol: "BTC"}, big.NewInt(1000000), PoolResource{
-					CoinXReserve: big.NewInt(10415880990),
-					CoinYReserve: big.NewInt(3004784231600),
-				})
+    CoinXReserve: big.NewInt(10415880990),
+    CoinYReserve: big.NewInt(3004784231600),
+})
 ```
 
 Calc amount min out:
@@ -26,9 +26,9 @@ amountMinOut := AmountMinOut(amountOut, decimal.NewFromFloat(0.005))
 Get amount in:
 ```go
 amountIn := GetAmountIn(Coin{Symbol: "USDT"}, Coin{Symbol: "BTC"}, big.NewInt(1000000), PoolResource{
-					CoinXReserve: big.NewInt(10415880990),
-					CoinYReserve: big.NewInt(3004784231600),
-				})
+    CoinXReserve: big.NewInt(10415880990),
+    CoinYReserve: big.NewInt(3004784231600),
+})
 ```
 
 Get amount max in:
