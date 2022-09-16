@@ -165,13 +165,13 @@ func Test_compare(t *testing.T) {
 		want int
 	}{
 		{
-			name: "APTOS BTC",
-			args: args{"APTOS", "BTC"},
+			name: "APT BTC",
+			args: args{"APT", "BTC"},
 			want: LESS_THAN,
 		},
 		{
-			name: "BTC APTOS",
-			args: args{"BTC", "APTOS"},
+			name: "BTC APT",
+			args: args{"BTC", "APT"},
 			want: GREATER_THAN,
 		},
 		{
@@ -190,8 +190,8 @@ func Test_compare(t *testing.T) {
 			want: LESS_THAN,
 		},
 		{
-			name: "APTOS USDT",
-			args: args{"APTOS", "USDT"},
+			name: "APT USDT",
+			args: args{"APT", "USDT"},
 			want: LESS_THAN,
 		},
 	}
