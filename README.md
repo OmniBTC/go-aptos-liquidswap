@@ -14,6 +14,7 @@ Get amount out:
 amountOut := GetAmountOut(Coin{Symbol: "USDT"}, Coin{Symbol: "BTC"}, big.NewInt(1000000), PoolResource{
     CoinXReserve: big.NewInt(10415880990),
     CoinYReserve: big.NewInt(3004784231600),
+    CurveType: Uncorellated,
 })
 ```
 
@@ -34,6 +35,18 @@ amountIn := GetAmountIn(Coin{Symbol: "USDT"}, Coin{Symbol: "BTC"}, big.NewInt(10
 Get amount max in:
 ```go
 amountMaxOut := AmountMaxIn(amountIn, decimal.NewFromFloat(0.005))
+```
+
+Use **StableCurve**
+
+> liquidswap pool type can be StableCurve for stable coins swap.
+
+```go
+amountIn := GetAmountIn(Coin{Symbol: "USDT"}, Coin{Symbol: "USDC"}, big.NewInt(1000000), PoolResource{
+    CoinXReserve: big.NewInt(81442051331),
+    CoinYReserve: big.NewInt(136352475461),
+    CurveType:    StableCurve,
+})
 ```
 
 Create payload info:

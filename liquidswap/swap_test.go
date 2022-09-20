@@ -49,6 +49,36 @@ func TestCalculateRates(t *testing.T) {
 			},
 			want: big.NewInt(57870929),
 		},
+		{
+			name: "case out stable",
+			args: args{
+				fromCoin:         Coin{Symbol: "USDT", Decimals: 6},
+				toCoin:           Coin{Symbol: "USDC", Decimals: 6},
+				amount:           big.NewInt(1000000),
+				interactiveToken: "from",
+				pool: PoolResource{
+					CoinXReserve: big.NewInt(81442051330),
+					CoinYReserve: big.NewInt(136352475460),
+					CurveType:    StableCurve,
+				},
+			},
+			want: big.NewInt(965540),
+		},
+		{
+			name: "case in stable",
+			args: args{
+				fromCoin:         Coin{Symbol: "USDT", Decimals: 6},
+				toCoin:           Coin{Symbol: "USDC", Decimals: 6},
+				amount:           big.NewInt(1000000),
+				interactiveToken: "to",
+				pool: PoolResource{
+					CoinXReserve: big.NewInt(81442051331),
+					CoinYReserve: big.NewInt(136352475461),
+					CurveType:    StableCurve,
+				},
+			},
+			want: big.NewInt(1_035691),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
