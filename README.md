@@ -1,5 +1,11 @@
 # go-aptos-liquidswap
-A go sdk for liquidswap on aptos.
+
+[![Go](https://github.com/coming-chat/go-aptos-liquidswap/workflows/Go/badge.svg?branch=main)](https://github.com/coming-chat/go-aptos-liquidswap/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/coming-chat/go-aptos-liquidswap)](https://goreportcard.com/report/github.com/coming-chat/go-aptos-liquidswap)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
+A go sdk for [liquidswap](https://liquidswap.com/) on [aptos](https://aptos.dev/).
 
 ## Install
 
@@ -11,11 +17,16 @@ go get github.com/coming-chat/go-aptos-liquidswap
 
 Get amount out:
 ```go
-amountOut := GetAmountOut(Coin{Symbol: "USDT"}, Coin{Symbol: "BTC"}, big.NewInt(1000000), PoolResource{
-    CoinXReserve: big.NewInt(10415880990),
-    CoinYReserve: big.NewInt(3004784231600),
-    CurveType: Uncorellated,
-})
+amountOut := GetAmountOut(
+    Coin{Symbol: "USDT", Decimal: 6},
+    Coin{Symbol: "BTC", Decimal: 8},
+    big.NewInt(1000000),
+    PoolResource{
+        CoinXReserve: big.NewInt(10415880990),
+        CoinYReserve: big.NewInt(3004784231600),
+        CurveType: Uncorellated,
+    },
+)
 ```
 
 Calc amount min out:
@@ -26,10 +37,15 @@ amountMinOut := AmountMinOut(amountOut, decimal.NewFromFloat(0.005))
 
 Get amount in:
 ```go
-amountIn := GetAmountIn(Coin{Symbol: "USDT"}, Coin{Symbol: "BTC"}, big.NewInt(1000000), PoolResource{
-    CoinXReserve: big.NewInt(10415880990),
-    CoinYReserve: big.NewInt(3004784231600),
-})
+amountIn := GetAmountIn(
+    Coin{Symbol: "USDT", Decimal: 6},
+    Coin{Symbol: "BTC", Decimal: 8},
+    big.NewInt(1000000),
+    PoolResource{
+        CoinXReserve: big.NewInt(10415880990),
+        CoinYReserve: big.NewInt(3004784231600),
+    },
+)
 ```
 
 Get amount max in:
@@ -42,11 +58,16 @@ Use **StableCurve**
 > liquidswap pool type can be StableCurve for stable coins swap.
 
 ```go
-amountIn := GetAmountIn(Coin{Symbol: "USDT"}, Coin{Symbol: "USDC"}, big.NewInt(1000000), PoolResource{
-    CoinXReserve: big.NewInt(81442051331),
-    CoinYReserve: big.NewInt(136352475461),
-    CurveType:    StableCurve,
-})
+amountIn := GetAmountIn(
+    Coin{Symbol: "USDT", Decimal: 6},
+    Coin{Symbol: "USDC", Decimal: 6},
+    big.NewInt(1000000),
+    PoolResource{
+        CoinXReserve: big.NewInt(81442051331),
+        CoinYReserve: big.NewInt(136352475461),
+        CurveType:    StableCurve,    // USDT-USDC pool is StableCurve
+    },
+)
 ```
 
 Create payload info:
