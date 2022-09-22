@@ -1,7 +1,7 @@
 # go-aptos-liquidswap
 
-[![Go](https://github.com/coming-chat/go-aptos-liquidswap/workflows/Go/badge.svg?branch=main)](https://github.com/coming-chat/go-aptos-liquidswap/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/coming-chat/go-aptos-liquidswap)](https://goreportcard.com/report/github.com/coming-chat/go-aptos-liquidswap)
+[![Go](https://github.com/omnibtc/go-aptos-liquidswap/workflows/Go/badge.svg?branch=main)](https://github.com/omnibtc/go-aptos-liquidswap/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/omnibtc/go-aptos-liquidswap)](https://goreportcard.com/report/github.com/omnibtc/go-aptos-liquidswap)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -10,7 +10,7 @@ A go sdk for [liquidswap](https://liquidswap.com/) on [aptos](https://aptos.dev/
 ## Install
 
 ```sh
-go get github.com/coming-chat/go-aptos-liquidswap
+go get github.com/omnibtc/go-aptos-liquidswap
 ```
 
 ## Usage

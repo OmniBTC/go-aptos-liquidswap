@@ -1,4 +1,4 @@
-module github.com/coming-chat/go-aptos-liquidswap
+module github.com/omnibtc/go-aptos-liquidswap
 
 go 1.18
 
