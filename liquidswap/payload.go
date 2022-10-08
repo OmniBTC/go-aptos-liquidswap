@@ -41,7 +41,7 @@ func CreateSwapPayload(params *SwapParams) (*Payload, error) {
 	typeArgs := []string{
 		params.FromCoin,
 		params.ToCoin,
-		params.Pool.LpToken,
+		params.Pool.CurveStructType,
 	}
 	if params.InteractiveToken != "from" {
 		params.FromAmount = withSlippage(params.FromAmount, params.Slippage, 1)
@@ -50,7 +50,6 @@ func CreateSwapPayload(params *SwapParams) (*Payload, error) {
 		params.ToAmount = withSlippage(params.ToAmount, params.Slippage, -1)
 	}
 	args := []string{
-		params.Pool.Address,
 		params.FromAmount.String(),
 		params.ToAmount.String(),
 	}

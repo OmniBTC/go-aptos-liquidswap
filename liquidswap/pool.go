@@ -16,7 +16,5 @@ type PoolResource struct {
 }
 
 type Pool struct {
-	LpToken       string
-	ModuleAddress string
-	Address       string
+	CurveStructType string
 }

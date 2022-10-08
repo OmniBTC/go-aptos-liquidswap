@@ -30,9 +30,7 @@ func TestCreateTxPayload(t *testing.T) {
 					InteractiveToken: "from",
 					Slippage:         decimal.NewFromFloat(0.005),
 					Pool: Pool{
-						LpToken:       "0x123::lp<0x123::APT,0x123::BTC>",
-						ModuleAddress: "0x1234",
-						Address:       "0x12345",
+						CurveStructType: "0x4e9fce03284c0ce0b86c88dd5a46f050cad2f4f33c4cdd29d98f501868558c81::curves::Uncorrelated",
 					},
 				},
 			},
@@ -41,10 +39,9 @@ func TestCreateTxPayload(t *testing.T) {
 				TypeArgs: []string{
 					"0x123::BTC",
 					"0x123::APT",
-					"0x123::lp<0x123::APT,0x123::BTC>",
+					"0x4e9fce03284c0ce0b86c88dd5a46f050cad2f4f33c4cdd29d98f501868558c81::curves::Uncorrelated",
 				},
 				Args: []string{
-					"0x12345",
 					"1",
 					"265273",
 				},
@@ -63,9 +60,7 @@ func TestCreateTxPayload(t *testing.T) {
 					InteractiveToken: "to",
 					Slippage:         decimal.NewFromFloat(0.005),
 					Pool: Pool{
-						LpToken:       "0x123::lp<0x123::APT,0x123::BTC>",
-						ModuleAddress: "0x1234",
-						Address:       "0x12345",
+						CurveStructType: "0x4e9fce03284c0ce0b86c88dd5a46f050cad2f4f33c4cdd29d98f501868558c81::curves::Uncorrelated",
 					},
 				},
 			},
@@ -74,10 +69,9 @@ func TestCreateTxPayload(t *testing.T) {
 				TypeArgs: []string{
 					"0x123::BTC",
 					"0x123::APT",
-					"0x123::lp<0x123::APT,0x123::BTC>",
+					"0x4e9fce03284c0ce0b86c88dd5a46f050cad2f4f33c4cdd29d98f501868558c81::curves::Uncorrelated",
 				},
 				Args: []string{
-					"0x12345",
 					"753924",
 					"1",
 				},
